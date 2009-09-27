@@ -1,0 +1,9 @@
+[submodule "client/Budget/Classes/objectiveresource"]
+	path = client/Budget/Classes/objectiveresource
+	url = git://github.com/yfactorial/objectiveresource.git
+[submodule "client/Budget/Classes/objectivesupport"]
+	path = client/Budget/Classes/objectivesupport
+	url = git://github.com/yfactorial/objectivesupport.git
+[submodule "client/Budget/Classes/google-toolbox"]
+	path = client/Budget/Classes/google-toolbox
+	url = git://github.com/tycho/google-toolbox-for-mac.git

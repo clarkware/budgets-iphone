@@ -1,0 +1,293 @@
+body {
+  background: #000;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: small;
+}
+
+div.clear {
+  clear: both;
+  overflow: hidden;
+  height: 0px;
+  display: block;
+}
+
+div.break {
+  border-top: 2px dotted #ccc;
+  margin: 1.5em 0;
+}
+
+.over {
+  color: #D00;
+}
+
+.under {
+  color: #000;
+}
+
+.budgeted {
+  color: #aaa;
+}
+
+h3 {
+  font-weight: bold;
+  color: #555;
+}
+
+/* LINKS */
+
+a img {
+  border: none;
+}
+
+a:link, a:visited {
+  color: #073;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #000;
+  background: #ffc;
+  text-decoration: none;
+}
+
+a.destructive {
+  color: #D00;
+  text-decoration: none;
+  background: none;
+}
+
+/* LAYOUT */
+
+div#header h1 {
+  font-size: 2.25em;
+  text-align: left;
+  width: 75%;
+  margin: 0 auto;
+  color: #EFF15F;
+  padding: 0.5em 0 0 0;
+}
+
+div#header h1 span.actions {
+  font-size: .5em;
+  float: right;
+  line-height: 2.5em;
+  color: #aaa;
+}
+
+div#header h1 span.actions a {
+  color: #aaa;
+}
+
+div#banner {
+  text-align: left;
+  background: #f5f5f5;
+  margin: -20px -40px 0px -40px;
+  border-bottom: 2px solid #ccc;
+  padding: .25em 1.5em;  
+}
+
+div#banner h2 span.actions {
+  font-weight: normal;
+  font-size: .5em;
+  float: right;
+  line-height: 2.5em;
+}
+
+div#banner h2 {
+  color: #555;
+}
+
+div#content {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  margin-top: 20px;
+}
+
+div#footer {
+  font-size: .75em;
+  text-align: center;
+  width: 75%;
+  margin: 0px auto;
+  color: #aaa;
+  padding: 1.5em 0 0 0;
+}
+
+/* FORMS */
+
+form {
+  padding: 0;
+  margin: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 1em 0;
+  padding: 0;
+}
+
+form label {
+  color: #555;
+  display: block;
+  font-size: 1.1em;
+  font-weight: normal;
+  padding-bottom: 2px;
+}
+
+form label.required {
+  font-weight: bold;
+}
+
+form .hint {
+  color: #555;
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;  
+}
+
+form input {
+  font-size: 1.25em;
+}
+
+form input:submit {
+  font-size: 1.25em; 
+}
+
+form select {
+  font-size: 1.25em;
+}
+
+input:focus,
+textarea:focus {
+  background: #ffc;
+}
+
+/* CATEGORY */
+
+div#budget #summary {
+  text-align:center; 
+  padding: 1em; 
+  font-size: 1.5em;
+}
+
+div#budget p.expense-form {
+  font-weight: bold;
+  color: #555;
+}
+
+/* TABLES */
+
+table#budgets {
+  margin-top: 1em;
+  width: 100%;
+  font-size: 1.5em;
+}
+
+table#budgets td {
+  border-bottom: 3px solid #ebebeb;
+  padding: 12px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+table#budgets td.name {
+  text-align: left;
+}
+
+table#budgets td.budget {
+  text-align: right;
+}
+
+table#budgets td.over-under {
+  text-align: right;
+}
+
+table#expenses {
+  width: 60%;
+  margin: 1em auto;
+  font-size: 1.35em;
+}
+
+table#expenses td {
+  padding: 6px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+table#expenses td.name {
+  text-align: left;
+}
+
+table#expenses td.amount {
+  text-align: right;
+}
+
+/* FLASHES */
+
+#flash_notice,
+#flash_warning,
+#flash_error {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 1em;
+  padding: 1em;
+  text-align: center;
+}
+
+#flash_notice {
+  background-color: #20a64c;
+  color: #fff;
+}
+
+#flash_warning {
+  background-color: #e1b445;
+  color: #fff;
+}
+
+#flash_error {
+  background-color: #d9715d;
+  color: #fff;
+}
+
+/* ERRORS */
+
+.error_message {
+  display: block;
+  color: #D00;
+  font-size: 1em;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}

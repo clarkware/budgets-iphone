@@ -1,0 +1,15 @@
+<% labeled_form_for([@budget, @expense]) do |f| -%>
+<fieldset>  
+  <%= f.text_field :name %>
+  <%= f.text_field :amount %>
+  <p>
+    <% if @expense.new_record? -%>
+      <%= submit_tag "Create" %> or
+      <%= cancel_link budget_expenses_path(@budget) %>
+    <% else -%>
+      <%= submit_tag "Update" %> or
+      <%= cancel_link budget_expense_path(@budget, @expense) %>
+    <% end -%>
+  </p>
+</fieldset>
+<% end -%>

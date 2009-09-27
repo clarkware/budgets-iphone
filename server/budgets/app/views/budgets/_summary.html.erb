@@ -1,0 +1,15 @@
+<span class="<%= budget_total_class(budget) %>">
+  <%= number_to_currency(budget.spent) %> 
+</span>
+<span class="budgeted">
+  of <%= number_to_currency(budget.amount) %></span>
+</span>
+<% if budget.exceeded? -%>
+  <span class="over">
+    (<%= number_to_currency(budget.over_amount) %>)
+  </span>
+<% else -%>    
+  <span class="under">
+    (<%= number_to_currency(budget.under_amount) %>) 
+  </span>
+<% end -%>

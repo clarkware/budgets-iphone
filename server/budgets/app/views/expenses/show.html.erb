@@ -1,0 +1,22 @@
+<% banner "#{@budget.name} Expense", 
+  link_to('Edit', edit_budget_expense_path(@budget, @expense)),
+  link_to('Delete', budget_expense_path(@budget, @expense), 
+           :confirm => 'Sure?', :method => :delete) %>
+
+
+<table id="expenses" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="name">
+      <%= link_to @expense.name, 
+                  budget_expense_path(@expense.budget, @expense) %>
+    </td>
+    <td align="amount">
+      <%= number_to_currency(@expense.amount) %>
+    </td>
+  </tr>
+</table>
+
+<p>
+<%= link_to 'All Expenses for this budget', 
+            budget_expenses_path(@budget) %>
+</p>

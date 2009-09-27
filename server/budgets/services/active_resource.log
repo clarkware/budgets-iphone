@@ -1,0 +1,4 @@
+# Logfile created on Fri Apr 24 09:47:09 -0600 2009 by /
+GET http://localhost:3000/categories.xml
+GET http://localhost:3000/categories.xml
+--> 200 OK (434 272ms)

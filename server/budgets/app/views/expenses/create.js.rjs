@@ -1,0 +1,12 @@
+page[:expenses].replace_html :partial => 'budgets/expenses', 
+                             :locals  => {:expenses  => @budget.expenses,
+                                          :budget => @budget}
+
+page[:summary].replace_html :partial => 'budgets/summary', 
+                             :locals  => {:budget => @budget}
+                             
+page[:summary].highlight
+
+page[:new_expense].reset
+
+page[:expense_amount].focus                             

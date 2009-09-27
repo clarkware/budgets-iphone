@@ -1,0 +1,30 @@
+<% banner 'Budgets', link_to('Create new budget', new_budget_path) %>
+             
+<table id="budgets" border="0" cellpadding="0" cellspacing="0">
+<% @budgets.each do |budget| -%>
+  <tr>
+    <td class="name">
+      <%= link_to budget.name, budget %>
+    </td>
+    <td class="budget">
+      <span class="<%= budget_total_class(budget) %>">
+        <%= number_to_currency(budget.spent) %> 
+      </span>
+      <span class="budgeted">
+        of <%= number_to_currency(budget.amount) %>
+      </span>
+    </td>
+    <td class="over-under">
+      <% if budget.exceeded? -%>
+        <span class="over">
+          <%= number_to_currency(budget.over_amount) %>
+        </span>
+      <% else -%>   
+        <span class="under">
+          <%= number_to_currency(budget.under_amount) %> 
+        </span>
+      <% end -%>
+    </td> 
+  </tr>
+<% end -%>
+</table>

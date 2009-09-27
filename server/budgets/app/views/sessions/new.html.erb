@@ -1,0 +1,24 @@
+<% banner "Login" %>
+
+<p>
+  Don't have an account yet? 
+  <%= link_to "Sign up!", signup_path %>
+</p>
+
+<% form_tag sessions_path do -%>
+<fieldset>
+  <p>
+    <%= label_tag :login, 'Login or E-mail' %>
+    <%= text_field_tag 'session[login]', 
+                       params[:login], :size => 20 %>
+  </p>
+  <p>
+    <%= label_tag :password, 'Password' %>
+    <%= password_field_tag 'session[password]', 
+                           params[:password], :size => 20 %>
+  </p>
+  <p>
+	  <%= submit_tag 'Log In', :class => 'button' %>
+	</p>
+</fieldset>	
+<% end -%>

@@ -1,0 +1,38 @@
+<% banner @budget.name, 
+  link_to('Edit', edit_budget_path(@budget)),
+  link_to('Delete', @budget, :confirm => 'Sure?', :method => :delete) %>
+
+<div id="budget">
+
+<div id="summary">
+  <%= render :partial => 'summary',
+             :locals  => {:budget => @budget} %>
+</div>
+
+<div class="break"></div>
+
+<div id="expenses">
+  <% if @budget.expenses.any? -%>  
+    <%= render :partial => 'expenses',
+               :locals  => {:expenses  => @budget.expenses, 
+                            :budget => @budget} %>
+  <% else -%>
+    No expenses (yet).  Go on, add one...
+  <% end -%>
+</div>
+
+<div class="break"></div>
+
+<h3>Add an expense</h3>
+
+<% remote_form_for([@budget, @expense]) do |f| -%>
+  <p class="expense-form">
+    $<%= f.text_field :amount, :size => 6 %> 
+    <strong>for</strong>
+    <%= f.text_field :name %>
+  </p>
+  <%= f.submit 'Add this expense' %> or 
+  <%= cancel_link budgets_path %>
+<% end -%>
+
+</div>

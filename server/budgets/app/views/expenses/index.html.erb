@@ -1,0 +1,6 @@
+<% banner "#{@budget.name} Expenses", 
+          link_to('Create new expense', new_budget_expense_path(@budget)) %>
+
+<%= render :partial => 'budgets/expenses',
+           :locals  => {:expenses => @budget.expenses, 
+                        :budget  => @budget} %>

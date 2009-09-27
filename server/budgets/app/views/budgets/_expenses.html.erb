@@ -1,0 +1,19 @@
+<table id="expenses" border="0" cellpadding="0" cellspacing="0">
+<% expenses.each do |expense| -%>
+  <tr id="<%= dom_id(expense) %>">
+    <td class="name">
+      <%= link_to expense.name, 
+                  edit_budget_expense_path(expense.budget, expense) %>
+    </td>
+    <td align="amount">
+      <%= number_to_currency(expense.amount) %>
+    </td>
+    <td>
+      <%= link_to_remote 'x', { :url => budget_expense_url(budget, expense), 
+                                :confirm => 'Are you sure?', 
+                                :method => :delete
+                              }, :class => 'destructive' %>
+    </td>
+  </tr>
+<% end -%>
+</table>
