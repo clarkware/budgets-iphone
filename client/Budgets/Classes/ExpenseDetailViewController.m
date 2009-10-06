@@ -36,14 +36,6 @@
     [nameField becomeFirstResponder];
     amountField = [self newAmountField];
     
-    if (expense.expenseId) {
-        self.title = @"Expense";
-        nameField.text = expense.name;
-        amountField.text = [CurrencyHelpers dollarsToPence:expense.amount];
-    } else {
-        self.title = @"Add Expense";
-    }
-    
     UIBarButtonItem *cancelButton = [UIHelpers newCancelButton:self];
     self.navigationItem.leftBarButtonItem = cancelButton;
     [cancelButton release];
@@ -52,6 +44,20 @@
     self.navigationItem.rightBarButtonItem = saveButton;
     [saveButton release];        
 } 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (expense.expenseId) {
+        self.title = @"Edit Expense";
+        nameField.text = expense.name;
+        amountField.text = [CurrencyHelpers dollarsToPence:expense.amount];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.title = @"Add Expense";
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -71,11 +77,6 @@
 #pragma mark Actions
 
 - (IBAction)save {
-    if (([nameField.text length] == 0) || ([amountField.text length] == 0)) {
-        [UIHelpers showAlert:@"Whoops!" withMessage:@"Please enter a name and an amount."];
-        return;
-    }
-    
     expense.name = nameField.text;
     expense.amount = [CurrencyHelpers penceToDollars:amountField.text];
     
@@ -126,6 +127,12 @@
 	return YES;
 }    
 
+- (IBAction)textFieldChanged:(id)sender {
+    BOOL enableSaveButton = 
+        ([self.nameField.text length] > 0) && ([self.amountField.text length] > 0);
+    [self.navigationItem.rightBarButtonItem setEnabled:enableSaveButton];
+}
+
 #pragma mark -
 #pragma mark Private methods
 
@@ -150,6 +157,9 @@
     field.placeholder = @"Name";
     field.keyboardType = UIKeyboardTypeASCIICapable;
     field.returnKeyType = UIReturnKeyNext;
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 
@@ -157,6 +167,9 @@
     UITextField *field = [UIHelpers newTableCellTextField:self];
     field.placeholder = @"Amount";
     field.keyboardType = UIKeyboardTypeNumberPad;
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 

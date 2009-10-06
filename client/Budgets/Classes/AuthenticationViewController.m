@@ -40,6 +40,7 @@
     
     UIBarButtonItem *saveButton = [UIHelpers newSaveButton:self];
     self.navigationItem.rightBarButtonItem = saveButton;
+    saveButton.enabled = NO;
     [saveButton release];
 }
 
@@ -57,12 +58,6 @@
 #pragma mark Actions
 
 - (IBAction)save {
-    if (([usernameField.text length] == 0) || 
-        ([passwordField.text length] == 0)) {
-        [UIHelpers showAlert:@"Login Error" withMessage:@"Username and password are required."];
-        return;
-    }
-    
     user.login = [usernameField text];
     user.password = [passwordField text];
     
@@ -83,6 +78,12 @@
         [self save];
     }
 	return YES;
+}
+
+- (IBAction)textFieldChanged:(id)sender {
+    BOOL enableSaveButton = 
+        ([self.usernameField.text length] > 0) && ([self.passwordField.text length] > 0);
+        [self.navigationItem.rightBarButtonItem setEnabled:enableSaveButton];
 }
 
 #pragma mark -
@@ -140,6 +141,9 @@ titleForFooterInSection:(NSInteger)section {
     field.autocapitalizationType = UITextAutocapitalizationTypeNone;
     field.autocorrectionType = UITextAutocorrectionTypeNo;
     field.returnKeyType = UIReturnKeyNext;
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 
@@ -151,6 +155,9 @@ titleForFooterInSection:(NSInteger)section {
     field.autocorrectionType = UITextAutocorrectionTypeNo;
     field.secureTextEntry = YES;
     field.returnKeyType = UIReturnKeyDone;
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 

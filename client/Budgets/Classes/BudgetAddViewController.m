@@ -45,6 +45,7 @@
     
     UIBarButtonItem *saveButton = [UIHelpers newSaveButton:self];
     self.navigationItem.rightBarButtonItem = saveButton;
+    saveButton.enabled = NO;
     [saveButton release];        
 } 
 
@@ -66,11 +67,6 @@
 #pragma mark Actions
 
 - (IBAction)save {
-    if (([nameField.text length] == 0) || ([amountField.text length] == 0)) {
-        [UIHelpers showAlert:@"Whoops!" withMessage:@"Please enter a name and an amount."];
-        return;
-    }
-    
     budget.name = nameField.text;
     budget.amount = [CurrencyHelpers penceToDollars:amountField.text];
     
@@ -96,6 +92,12 @@
     }
 	return YES;
 } 
+
+- (IBAction)textFieldChanged:(id)sender {
+    BOOL enableSaveButton = 
+        ([self.nameField.text length] > 0) && ([self.amountField.text length] > 0);
+    [self.navigationItem.rightBarButtonItem setEnabled:enableSaveButton];
+}
 
 #pragma mark -
 #pragma mark Table view methods
@@ -142,6 +144,9 @@
     UITextField *field = [UIHelpers newTableCellTextField:self];
     field.returnKeyType = UIReturnKeyNext;
     field.placeholder = @"Name";
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 
@@ -149,6 +154,9 @@
     UITextField *field = [UIHelpers newTableCellTextField:self];
     field.placeholder = @"Amount";
     field.keyboardType = UIKeyboardTypeNumberPad;
+    [field addTarget:self 
+              action:@selector(textFieldChanged:) 
+    forControlEvents:UIControlEventEditingChanged];
     return field;
 }
 

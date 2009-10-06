@@ -4,18 +4,16 @@
 
 + (UIBarButtonItem *)newCancelButton:(id)target {
     return [[UIBarButtonItem alloc] 
-            initWithTitle:@"Cancel" 
-            style:UIBarButtonSystemItemCancel 
+            initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
             target:target 
-            action:@selector(cancel)];
+            action:@selector(cancel)];    
 }
 
 + (UIBarButtonItem *)newSaveButton:(id)target {
-    return [[UIBarButtonItem alloc]
-            initWithTitle:@"Save" 
-            style:UIBarButtonSystemItemSave
+    return [[UIBarButtonItem alloc] 
+            initWithBarButtonSystemItem:UIBarButtonSystemItemSave
             target:target 
-            action:@selector(save)];
+            action:@selector(save)];    
 }
 
 + (UITextField *)newTableCellTextField:(id)delegate {
